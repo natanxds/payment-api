@@ -1,12 +1,13 @@
 # Payment API
 
-This API is a payment service that allows users to create wallets, deposit and withdraw funds, and transfer funds between wallets. It's built using Java, Spring Boot, and Maven.
+This API is a payment service that allows users to create wallets, deposit and withdraw funds, and transfer funds between wallets. It's built using Java, Spring Boot, Maven, and Docker.
 
 ## Technologies Used
 
 - **Java**
 - **Spring Boot**
 - **Maven**
+- **Docker**
 
 ## Endpoints
 
@@ -74,13 +75,27 @@ This API is a payment service that allows users to create wallets, deposit and w
 
 ## Running the Application
 
+To run the application mysql database, you need to have Docker installed on your machine. You can then clone the repository and navigate to the `docker` directory:
+
+```bash
+cd docker
+```
+
+Then, run the mysql database using the following command:
+
+```bash
+docker-compose up
+```
+
+This will start the MySQL database in a Docker container. 
+
 To run the application, you need to have Java and Maven installed on your machine. You can then clone the repository and run the application using the following command:
 
 ```bash
 mvn spring-boot:run
 ```
 
-This will start the application on port 8080. You can then access the API endpoints at `http://localhost:8080/api/v1/`.
+You can then access the API endpoints at `http://localhost:8080/api/v1/`.
 
 ## Testing
 
@@ -92,6 +107,9 @@ mvn test
 
 This will run all the unit tests and integration tests for the application.
 
+## Contributing
+
+If you would like to contribute to this project, please feel free to fork the repository, make your changes, and then submit a pull request. We appreciate any contributions that can help improve the project.
 ## Credits
 
 - [Build & Run](https://www.youtube.com/watch?v=dttXo48oXt4&ab_channel=Build%26Run)
