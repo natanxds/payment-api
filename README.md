@@ -1,42 +1,76 @@
 # Payment API
 
-This API is a payment service that allows users to create wallets, deposit and withdraw funds, and transfer funds between wallets. It's built using Java, Spring Boot, Maven and MySQL.
+This API is a payment service that allows users to create wallets, deposit and withdraw funds, and transfer funds between wallets. It's built using Java, Spring Boot, and Maven.
 
 ## Technologies Used
 
 - **Java**
 - **Spring Boot**
-- **Java**
-- **MySQL**
+- **Maven**
 
 ## Endpoints
 
 ### Wallet Endpoints
 
-- `POST /api/v1/wallets`: Create a new wallet. The request body should be a JSON object with the following properties:
-  - `fullname`: The full name of the wallet owner.
-  - `cpf_cnpj`: The CPF or CNPJ of the wallet owner.
-  - `email`: The email of the wallet owner.
-  - `password`: The password for the wallet.
-  - `walletType`: The type of the wallet (either "user" or "merchant").
+- **Create a new wallet**
 
-- `POST /api/v1/wallets/deposit`: Deposit an amount into a wallet. The request body should be a JSON object with the following properties:
-  - `walletKey`: The CPF, CNPJ, or email associated with the wallet.
-  - `amount`: The amount to deposit.
+  `POST /api/v1/wallets`
 
-- `POST /api/v1/wallets/withdraw`: Withdraw an amount from a wallet. The request body should be a JSON object with the following properties:
-  - `walletKey`: The CPF, CNPJ, or email associated with the wallet.
-  - `amount`: The amount to withdraw.
+  ```json
+  {
+    "fullname": "John Doe",
+    "cpf_cnpj": "12345678901",
+    "email": "john.doe@example.com",
+    "password": "password123",
+    "walletType": "user"
+  }
+  ```
 
-- `GET /api/v1/wallets/transactions`: Get a statement of transactions for a wallet. The request body should be a JSON object with the following properties:
-  - `walletKey`: The CPF, CNPJ, or email associated with the wallet.
+- **Deposit an amount into a wallet**
+
+  `POST /api/v1/wallets/deposit`
+
+  ```json
+  {
+    "walletKey": "john.doe@example.com",
+    "amount": 100.00
+  }
+  ```
+
+- **Withdraw an amount from a wallet**
+
+  `POST /api/v1/wallets/withdraw`
+
+  ```json
+  {
+    "walletKey": "john.doe@example.com",
+    "amount": 50.00
+  }
+  ```
+
+- **Get a statement of transactions for a wallet**
+
+  `GET /api/v1/wallets/transactions`
+
+  ```json
+  {
+    "walletKey": "john.doe@example.com"
+  }
+  ```
 
 ### Transfer Endpoints
 
-- `POST /api/v1/transfers`: Transfer an amount from one wallet to another. The request body should be a JSON object with the following properties:
-  - `payer`: The CPF, CNPJ, or email associated with the payer's wallet.
-  - `payee`: The CPF, CNPJ, or email associated with the payee's wallet.
-  - `value`: The amount to transfer.
+- **Transfer an amount from one wallet to another**
+
+  `POST /api/v1/transfers`
+
+  ```json
+  {
+    "payer": "john.doe@example.com",
+    "payee": "jane.doe@example.com",
+    "value": 25.00
+  }
+  ```
 
 ## Running the Application
 
